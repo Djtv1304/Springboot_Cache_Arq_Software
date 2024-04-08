@@ -7,15 +7,18 @@ spring:
 
 
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/cache_springboot #jdbc:mysql://localhost:3306/test?useSSL=false
-    username: root
-    password: 12345
-    hikari:
-      initialization-fail-timeout: 0
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    h2:
+      console:
+        enabled: true
+
+  # Configuración de JPA
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect #org.hibernate.dialect.MySQL5Dialect
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
     generate-ddl: true
     show-sql: true
-    hibernate:
-      ddl-auto: create
+
